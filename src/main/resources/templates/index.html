@@ -134,22 +134,22 @@
                 <div class="col-md-6">
                     <article class="dashboard-card metric-card">
                         <div class="metric-header">
-                            <span class="metric-label">CO₂ EMISSIONS</span>
-                            <span class="metric-icon">CO₂</span>
+                            <span class="metric-label">CO₂e EMISSIONS</span>
+                            <span class="metric-icon">CO₂e</span>
                         </div>
 
                         <div class="metric-value"
                              th:text="${latestEmission != null
-                                 ? #numbers.formatDecimal(latestEmission.emissionsKt, 1, 'COMMA', 3, 'POINT')
-                                 : '—'}">
+         ? #numbers.formatDecimal(latestEmission.emissionsKt, 1, 'COMMA', 3, 'POINT')
+         : '—'}">
                             —
                         </div>
 
                         <p class="metric-description"
                            th:text="${latestEmission != null
-                               ? 'Kilotonnes (kt) · ' + selectedCountry.name
-                               : 'Kilotonnes (kt) · Awaiting data'}">
-                            Kilotonnes (kt) · Awaiting data
+       ? 'Kilotonnes CO₂e (kt) · ' + selectedCountry.name
+       : 'Kilotonnes CO₂e (kt) · Awaiting data'}">
+                            Kilotonnes CO₂e (kt) · Awaiting data
                         </p>
                     </article>
                 </div>
@@ -199,13 +199,18 @@
                     <div class="chart-container">
                         <canvas id="emissionsChart"
                                 role="img"
-                                aria-label="Historical CO2 emissions by reporting year">
+                                aria-label="Historical CO2 equivalent emissions by reporting year">
                         </canvas>
                     </div>
 
                     <p class="chart-note">
-                        Values are expressed in kilotonnes (kt) of CO₂.
-                        Current records contain fictional development data.
+                        Values are expressed in kilotonnes of CO₂ equivalent (kt CO₂e).
+                        Source:
+                        <a href="https://data.worldbank.org/indicator/EN.GHG.CO2.MT.CE.AR5"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            World Bank, World Development Indicators
+                        </a>
                     </p>
                 </div>
 

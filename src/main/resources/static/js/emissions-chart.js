@@ -20,7 +20,7 @@ if (!chartCanvas || typeof Chart === "undefined" || !Array.isArray(emissionHisto
             data: {
                 labels: years,
                 datasets: [{
-                    label: "CO₂ emissions (kt)",
+                    label: "CO₂ emissions (kt CO₂e)",
                     data: emissions,
                     borderColor: "#176b50",
                     backgroundColor: "rgba(23, 107, 80, 0.10)",
@@ -41,7 +41,7 @@ if (!chartCanvas || typeof Chart === "undefined" || !Array.isArray(emissionHisto
                     tooltip: {
                         callbacks: {
                             label: context =>
-                                `${context.parsed.y.toLocaleString("en-US")} kt CO₂`
+                                `${context.parsed.y.toLocaleString("en-US")} kt CO₂e`
                         }
                     }
                 },
@@ -59,7 +59,7 @@ if (!chartCanvas || typeof Chart === "undefined" || !Array.isArray(emissionHisto
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: "CO₂ emissions (kt)"
+                            text: "CO₂ emissions (kt CO₂e)"
                         },
                         ticks: {
                             callback: value => Number(value).toLocaleString("en-US")

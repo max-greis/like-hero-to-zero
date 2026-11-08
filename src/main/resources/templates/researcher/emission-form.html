@@ -26,9 +26,9 @@
 
             <p class="text-muted mb-4"
                th:text="${recordId != null}
-                   ? 'Update the annual CO₂ emission value for this record.'
-                   : 'Enter a new annual CO₂ emission value for a country.'">
-                Enter a new annual CO₂ emission value for a country.
+       ? 'Update the annual CO₂-equivalent emission value for this record.'
+       : 'Enter a new annual CO₂-equivalent emission value for a country.'">
+                Enter a new annual CO₂-equivalent emission value for a country.
             </p>
 
             <form th:action="${recordId != null}
@@ -94,7 +94,7 @@
 
                 <div class="mb-4">
                     <label for="emissionsKt" class="form-label">
-                        CO₂ emissions (kt)
+                        CO₂ emissions (kt CO₂e)
                     </label>
 
                     <input type="number"
@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="form-text">
-                        Enter the value in kilotonnes, using up to three decimal places.
+                        Enter the value in kilotonnes of CO₂ equivalent (kt CO₂e), using up to three decimal places.
                     </div>
                 </div>
 

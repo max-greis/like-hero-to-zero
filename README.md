@@ -180,3 +180,21 @@ Current local development settings:
 ## Project Status
 
 Academic project developed as part of the IU IPWA02-01 course.
+
+## Emission Data
+
+The application uses country-level emission data from the
+World Bank's World Development Indicators.
+
+- Source: World Bank
+- Indicator: EN.GHG.CO2.MT.CE.AR5
+- Unit in source data: Mt CO2e
+- Unit in application: kt CO2e
+- Conversion: 1 Mt = 1,000 kt
+- Data period: 2020–2024
+
+The current development dataset contains five countries:
+Germany, United States, China, India and Brazil.
+
+Source:
+https://data.worldbank.org/indicator/EN.GHG.CO2.MT.CE.AR5
