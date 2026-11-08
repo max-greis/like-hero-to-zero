@@ -1,7 +1,7 @@
-package com.example.likeherotozero.service;
+package iu.ipwa02.likeherotozero.service;
 
-import com.example.likeherotozero.entity.AppUser;
-import com.example.likeherotozero.repository.AppUserRepository;
+import iu.ipwa02.likeherotozero.entity.AppUser;
+import iu.ipwa02.likeherotozero.repository.AppUserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

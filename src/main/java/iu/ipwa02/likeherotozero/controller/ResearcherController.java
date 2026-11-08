@@ -1,7 +1,7 @@
-package com.example.likeherotozero.controller;
+package iu.ipwa02.likeherotozero.controller;
 
-import com.example.likeherotozero.dto.EmissionRecordForm;
-import com.example.likeherotozero.service.EmissionService;
+import iu.ipwa02.likeherotozero.dto.EmissionRecordForm;
+import iu.ipwa02.likeherotozero.service.EmissionService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

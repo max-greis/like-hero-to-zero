@@ -1,6 +1,6 @@
-package com.example.likeherotozero.repository;
+package iu.ipwa02.likeherotozero.repository;
 
-import com.example.likeherotozero.entity.AppUser;
+import iu.ipwa02.likeherotozero.entity.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

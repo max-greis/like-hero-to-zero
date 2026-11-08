@@ -1,4 +1,4 @@
-package com.example.likeherotozero.entity;
+package iu.ipwa02.likeherotozero.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

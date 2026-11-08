@@ -1,4 +1,4 @@
-package com.example.likeherotozero.dto;
+package iu.ipwa02.likeherotozero.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;

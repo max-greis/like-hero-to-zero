@@ -1,6 +1,6 @@
-package com.example.likeherotozero.repository;
+package iu.ipwa02.likeherotozero.repository;
 
-import com.example.likeherotozero.entity.EmissionRecord;
+import iu.ipwa02.likeherotozero.entity.EmissionRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
 

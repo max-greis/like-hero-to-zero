@@ -1,4 +1,4 @@
-package com.example.likeherotozero.dto;
+package iu.ipwa02.likeherotozero.dto;
 
 import java.math.BigDecimal;
 

@@ -1,7 +1,7 @@
-package com.example.likeherotozero.controller;
+package iu.ipwa02.likeherotozero.controller;
 
-import com.example.likeherotozero.entity.Country;
-import com.example.likeherotozero.service.EmissionService;
+import iu.ipwa02.likeherotozero.entity.Country;
+import iu.ipwa02.likeherotozero.service.EmissionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
