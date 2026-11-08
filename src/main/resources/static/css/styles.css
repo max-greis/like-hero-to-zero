@@ -1,0 +1,349 @@
+:root {
+    --color-primary: #176b50;
+    --color-primary-dark: #104b39;
+    --color-background: #f6f8f7;
+    --color-surface: #ffffff;
+    --color-heading: #173d30;
+    --color-text: #34463f;
+    --color-muted: #728078;
+    --color-border: #e4ebe7;
+    --color-accent-light: #eaf5ee;
+
+    --shadow-card: 0 8px 30px rgba(25, 61, 46, 0.04);
+    --radius-card: 18px;
+}
+
+/* Base styles */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--color-heading);
+    font-weight: 700;
+}
+
+/* Navigation */
+
+.site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.navbar {
+    min-height: 78px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-heading);
+    font-size: 1.1rem;
+    font-weight: 750;
+}
+
+.brand:hover {
+    color: var(--color-primary);
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 1.4rem;
+}
+
+.nav-link {
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: var(--color-primary) !important;
+}
+
+.researcher-link {
+    padding: 9px 16px;
+    border-radius: 9px;
+    font-weight: 600;
+}
+
+/* Hero section */
+
+.hero-section {
+    padding: 86px 0 75px;
+    background: linear-gradient(135deg, #eef7f1 0%, #f6f8f7 75%);
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 750;
+    letter-spacing: 1.8px;
+}
+
+.hero-section h1 {
+    max-width: 850px;
+    margin-bottom: 22px;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    line-height: 1.14;
+    letter-spacing: -1.8px;
+}
+
+.hero-description {
+    max-width: 660px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+/* Dashboard */
+
+.dashboard-section {
+    padding: 65px 0 100px;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    margin-bottom: 9px;
+    font-size: 1.9rem;
+}
+
+.section-heading p,
+.overview-heading p {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+.dashboard-card {
+    padding: 30px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+}
+
+.overview-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.overview-heading h3 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+}
+
+.status-label {
+    padding: 8px 12px;
+    border-radius: 30px;
+    background: #edf4f0;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+/* Metric cards */
+
+.metric-card {
+    min-height: 205px;
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.metric-label {
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.metric-icon {
+    display: grid;
+    place-items: center;
+    min-width: 42px;
+    height: 42px;
+    padding: 0 7px;
+    border-radius: 11px;
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 750;
+}
+
+.metric-value {
+    margin-top: 22px;
+    color: var(--color-heading);
+    font-size: 2.7rem;
+    font-weight: 750;
+    line-height: 1.2;
+}
+
+.metric-description {
+    margin: 8px 0 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+/* Charts */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    margin-top: 24px;
+}
+
+.chart-note {
+    margin-top: 16px;
+    margin-bottom: 0;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+/* Forms */
+
+.country-card .form-label {
+    margin-bottom: 12px;
+    color: var(--color-heading);
+    font-weight: 650;
+}
+
+.form-select {
+    min-height: 50px;
+    border-color: var(--color-border);
+    border-radius: 10px;
+}
+
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(23, 107, 80, 0.12);
+}
+
+.form-text {
+    margin-top: 10px;
+    color: var(--color-muted);
+}
+
+/* Empty state */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+    padding: 30px;
+    text-align: center;
+}
+
+.empty-state-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: var(--color-accent-light);
+    color: var(--color-primary);
+    font-size: 1.8rem;
+}
+
+.empty-state h4 {
+    margin-bottom: 9px;
+    font-size: 1.1rem;
+}
+
+.empty-state p {
+    max-width: 390px;
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.7;
+}
+
+/* Footer */
+
+.site-footer {
+    padding: 28px 0;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+
+/* Responsive design */
+
+@media (max-width: 767px) {
+    .navbar {
+        min-height: 68px;
+    }
+
+    .navbar-collapse {
+        padding: 18px 0 8px;
+    }
+
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .dashboard-section {
+        padding: 45px 0 70px;
+    }
+
+    .dashboard-card {
+        padding: 22px;
+    }
+
+    .overview-heading {
+        flex-direction: column;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .chart-container {
+        height: 280px;
+    }
+}

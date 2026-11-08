@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore country-level CO2 emissions.">
+    <title>Overview | Like Hero To Zero</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-md">
+        <div class="container">
+            <a class="navbar-brand brand" th:href="@{/}">
+                <span class="brand-icon">↗</span>
+                <span>Like Hero To Zero</span>
+            </a>
+
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavigation"
+                    aria-controls="mainNavigation"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavigation">
+                <div class="navbar-nav ms-auto align-items-md-center gap-md-3">
+                    <a class="nav-link active"
+                       th:href="@{/}"
+                       aria-current="page">
+                        Overview
+                    </a>
+                    <a class="btn btn-outline-success btn-sm researcher-link"
+                       th:href="@{/login}">
+                        Researcher Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9">
+                    <span class="eyebrow">GLOBAL EMISSIONS TRACKER</span>
+                    <h1>
+                        Understand your country's
+                        <br class="d-none d-lg-block">
+                        carbon footprint.
+                    </h1>
+                    <p class="hero-description">
+                        Explore reported CO₂ emissions by country.
+                        Clear data, meaningful insights, and a better
+                        understanding of our environmental impact.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <span class="eyebrow">EXPLORE THE DATA</span>
+                <h2>Country overview</h2>
+                <p>Select a country to explore its emission records.</p>
+            </div>
+
+            <div class="dashboard-card country-card">
+                <form th:action="@{/}" method="get">
+                    <label for="countrySelect" class="form-label">
+                        Select your country
+                    </label>
+
+                    <div class="row g-3">
+                        <div class="col-md-9">
+                            <select id="countrySelect"
+                                    name="country"
+                                    class="form-select"
+                                    aria-describedby="countryHelp"
+                                    th:disabled="${#lists.isEmpty(countries)}"
+                                    required>
+
+                                <option value=""
+                                        disabled
+                                        th:selected="${selectedCountry == null}">
+                                    Choose a country
+                                </option>
+
+                                <option th:each="item : ${countries}"
+                                        th:value="${item.isoCode}"
+                                        th:text="${item.name}"
+                                        th:selected="${selectedCountry != null and selectedCountry.id == item.id}">
+                                    Country name
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <button type="submit"
+                                    class="btn btn-success w-100"
+                                    th:disabled="${#lists.isEmpty(countries)}">
+                                Explore emissions
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="countryHelp"
+                         class="form-text"
+                         th:text="${#lists.isEmpty(countries)
+                             ? 'No countries available yet. Country data will be added soon.'
+                             : 'Select a country to view its latest available emission data.'}">
+                        Select a country to view its latest available emission data.
+                    </div>
+
+                    <div class="alert alert-warning mt-3 mb-0"
+                         th:if="${countryNotFound}">
+                        The selected country could not be found.
+                    </div>
+                </form>
+            </div>
+
+            <div class="row g-4 mt-1">
+                <div class="col-md-6">
+                    <article class="dashboard-card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">CO₂ EMISSIONS</span>
+                            <span class="metric-icon">CO₂</span>
+                        </div>
+
+                        <div class="metric-value"
+                             th:text="${latestEmission != null
+                                 ? #numbers.formatDecimal(latestEmission.emissionsKt, 1, 'COMMA', 3, 'POINT')
+                                 : '—'}">
+                            —
+                        </div>
+
+                        <p class="metric-description"
+                           th:text="${latestEmission != null
+                               ? 'Kilotonnes (kt) · ' + selectedCountry.name
+                               : 'Kilotonnes (kt) · Awaiting data'}">
+                            Kilotonnes (kt) · Awaiting data
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6">
+                    <article class="dashboard-card metric-card">
+                        <div class="metric-header">
+                            <span class="metric-label">REPORTING YEAR</span>
+                            <span class="metric-icon">YR</span>
+                        </div>
+
+                        <div class="metric-value"
+                             th:text="${latestEmission != null
+                                 ? latestEmission.year
+                                 : '—'}">
+                            —
+                        </div>
+
+                        <p class="metric-description">
+                            Latest available reporting year
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4"
+                 th:if="${selectedCountry != null and latestEmission == null}">
+                No emission records are available for this country yet.
+            </div>
+
+            <section class="dashboard-card overview-card mt-4">
+                <div class="overview-heading">
+                    <div>
+                        <h3>Emission overview</h3>
+                        <p>Historical emission trends for the selected country.</p>
+                    </div>
+
+                    <span class="status-label"
+                          th:text="${selectedCountry != null
+                              ? selectedCountry.name
+                              : 'Select a country'}">
+                        Select a country
+                    </span>
+                </div>
+
+                <div th:if="${!#lists.isEmpty(emissionHistory)}">
+                    <div class="chart-container">
+                        <canvas id="emissionsChart"
+                                role="img"
+                                aria-label="Historical CO2 emissions by reporting year">
+                        </canvas>
+                    </div>
+
+                    <p class="chart-note">
+                        Values are expressed in kilotonnes (kt) of CO₂.
+                        Current records contain fictional development data.
+                    </p>
+                </div>
+
+                <div class="empty-state"
+                     th:if="${#lists.isEmpty(emissionHistory)}">
+                    <div class="empty-state-icon">↗</div>
+                    <h4>No emission data displayed yet</h4>
+                    <p>
+                        Select a country with available emission records
+                        to view its historical development.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-content">
+        <span>© Like Hero To Zero</span>
+        <span>Built for transparent environmental data.</span>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+
+<script th:inline="javascript">
+    const emissionHistory = /*[[${emissionHistory}]]*/ [];
+</script>
+
+<script th:src="@{/js/emissions-chart.js}"></script>
+
+</body>
+</html>
